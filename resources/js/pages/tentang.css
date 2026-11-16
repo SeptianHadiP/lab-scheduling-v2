@@ -1,0 +1,842 @@
+
+/* =========================================================
+   HALAMAN TENTANG — LAB SCHEDULING
+   ========================================================= */
+
+.about-page {
+    background: #f4f9fa;
+}
+
+.about-nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 2.3vw, 38px);
+    height: 86px;
+}
+
+/* =========================================================
+   HERO SECTION — PERBAIKAN LAYOUT UTAMA
+   ========================================================= */
+
+.about-hero {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    align-items: center;
+    gap: clamp(20px, 4vw, 64px);
+
+    width: 100%;
+    min-height: 0;
+    padding: 38px clamp(24px, 7.5vw, 124px) 44px;
+
+    overflow: hidden;
+    color: #f7fbff;
+
+    background:
+        radial-gradient(
+            ellipse at 10% 92%,
+            rgba(177, 170, 87, 0.16),
+            transparent 32%
+        ),
+        radial-gradient(
+            ellipse at 48% 100%,
+            rgba(39, 190, 157, 0.12),
+            transparent 40%
+        ),
+        #0b2531;
+}
+
+/* Glow tidak boleh menjadi item grid */
+.about-hero-glow {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            ellipse at 25% 100%,
+            rgba(84, 217, 189, 0.06),
+            transparent 40%
+        );
+}
+
+/* Lengkungan bawah hero */
+.about-hero::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    left: -6%;
+    bottom: -58px;
+    width: 112%;
+    height: 90px;
+    background: #f4f9fa;
+    border-radius: 48% 52% 0 0 / 76% 72% 0 0;
+    transform: rotate(-0.5deg);
+}
+
+/* Teks berada di kolom kanan */
+.about-hero-copy {
+    position: relative;
+    z-index: 2;
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    justify-self: start;
+
+    width: 100%;
+    max-width: 650px;
+    min-width: 0;
+}
+
+.about-hero-copy .eyebrow {
+    margin-bottom: 16px;
+}
+
+.about-hero h1 {
+    margin: 0 0 16px;
+    font-family: "Manrope", sans-serif;
+    font-size: clamp(40px, 4.2vw, 58px);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.045em;
+}
+
+.about-hero h1 span {
+    display: block;
+    color: #54d9bd;
+}
+
+.about-lead {
+    max-width: 570px;
+    margin: 0 0 26px;
+    color: #c5d3da;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* =========================================================
+   ILUSTRASI LAB — KOLOM KIRI
+   ========================================================= */
+
+.about-hero-art {
+    position: relative;
+    z-index: 1;
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+    justify-self: center;
+
+    display: grid;
+    place-items: center;
+
+    width: 100%;
+    max-width: 440px;
+    height: 300px;
+    min-height: 0;
+
+    /* Tidak menggunakan translateY negatif yang berlebihan */
+    transform: none;
+}
+
+/* Ikon lab */
+.about-flask {
+    position: relative;
+    z-index: 1;
+
+    display: grid;
+    place-items: center;
+
+    width: 180px;
+    height: 180px;
+
+    color: #64e2c8;
+    border: 1px solid rgba(110, 233, 211, 0.25);
+    border-radius: 42% 58% 54% 46% / 48% 42% 58% 52%;
+
+    background: linear-gradient(
+        145deg,
+        rgba(52, 205, 176, 0.15),
+        rgba(255, 255, 255, 0.025)
+    );
+
+    box-shadow:
+        0 25px 90px rgba(0, 0, 0, 0.17),
+        inset 0 0 45px rgba(77, 222, 194, 0.08);
+}
+
+.about-flask svg {
+    width: 104px;
+    height: 104px;
+}
+
+/* Lingkaran dekoratif */
+.about-orbit {
+    position: absolute;
+    width: 270px;
+    height: 270px;
+    border: 1px solid rgba(108, 226, 204, 0.2);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.orbit-one {
+    width: 300px;
+    height: 300px;
+}
+
+.orbit-two {
+    width: 390px;
+    height: 390px;
+    border-color: rgba(192, 185, 113, 0.17);
+}
+
+/* Label di bawah ilustrasi */
+.about-art-caption {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    width: max-content;
+    max-width: 100%;
+    padding: 10px 15px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 99px;
+
+    background: rgba(255, 255, 255, 0.06);
+    color: #c8d9df;
+    font-size: 12px;
+}
+
+.about-art-caption span {
+    flex-shrink: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #5ce0c4;
+    box-shadow: 0 0 14px #5ce0c4;
+}
+
+/* =========================================================
+   TENTANG PLATFORM
+   ========================================================= */
+
+.about-story {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(36px, 7vw, 110px);
+    padding: 82px clamp(24px, 7.5vw, 124px);
+    background: #f4f9fa;
+}
+
+.about-story-heading h2,
+.about-section-heading h2 {
+    margin: 13px 0 0;
+    color: #102a39;
+    font-family: "Manrope", sans-serif;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.035em;
+}
+
+.about-story-heading h2 span {
+    color: #129e8b;
+}
+
+.section-kicker {
+    color: #708695;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.19em;
+}
+
+.about-story-copy {
+    align-self: center;
+}
+
+.about-story-copy p {
+    margin: 0 0 15px;
+    color: #607482;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+/* =========================================================
+   VISI DAN MISI LABORATORIUM
+   ========================================================= */
+
+.about-lab-mission {
+    padding: 72px clamp(24px, 7.5vw, 124px) 82px;
+    color: #f7fbff;
+    background: #0b2531;
+}
+
+.about-lab-mission-heading {
+    max-width: 760px;
+    margin: 0 auto 34px;
+    text-align: center;
+}
+
+.about-lab-mission-heading .section-kicker {
+    color: #72d9c6;
+}
+
+.about-lab-mission-heading h2 {
+    margin: 12px 0 8px;
+    color: #f7fbff;
+    font-family: "Manrope", sans-serif;
+    font-size: clamp(30px, 3.4vw, 44px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.035em;
+}
+
+.about-lab-mission-heading p {
+    margin: 0;
+    color: #c5d3da;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.about-lab-mission-rule {
+    display: block;
+    width: 78px;
+    height: 3px;
+    margin: 24px auto 0;
+    border-radius: 99px;
+    background: linear-gradient(90deg, #54d9bd, #c0b971);
+}
+
+.about-lab-mission-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 20px;
+    max-width: 1240px;
+    margin: 0 auto;
+    align-items: stretch;
+}
+
+.about-lab-mission-card {
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.055);
+}
+
+.about-lab-mission-card-heading {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 20px;
+}
+
+.about-lab-mission-icon {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(84, 217, 189, 0.22);
+    border-radius: 15px;
+    color: #54d9bd;
+    background: rgba(84, 217, 189, 0.1);
+}
+
+.about-lab-mission-card h3 {
+    margin: 0;
+    color: #f7fbff;
+    font-family: "Manrope", sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.about-lab-vision > p {
+    margin: 0;
+    color: #d0dce1;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.about-lab-vision strong {
+    color: #70e1c9;
+    font-weight: 700;
+}
+
+.about-lab-mission-list ol {
+    display: grid;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: mission;
+}
+
+.about-lab-mission-list li {
+    position: relative;
+    min-height: 34px;
+    padding-left: 46px;
+    color: #d0dce1;
+    font-size: 13px;
+    line-height: 1.85;
+    counter-increment: mission;
+}
+
+.about-lab-mission-list li::before {
+    content: counter(mission, decimal-leading-zero);
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: grid;
+    place-items: center;
+
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(84, 217, 189, 0.24);
+    border-radius: 10px;
+
+    color: #70e1c9;
+    background: rgba(84, 217, 189, 0.08);
+    font-size: 11px;
+    font-weight: 800;
+}
+
+/* =========================================================
+   MANFAAT UTAMA
+   ========================================================= */
+
+.about-values {
+    padding: 12px clamp(24px, 7.5vw, 124px) 84px;
+    background: linear-gradient(145deg, #f4f9fa, #eaf6f5);
+}
+
+.about-section-heading {
+    max-width: 650px;
+    margin-bottom: 30px;
+}
+
+.about-section-heading h2 {
+    font-size: clamp(27px, 3vw, 38px);
+}
+
+.about-section-heading > p {
+    color: #657987;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.about-value-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.about-value-card {
+    position: relative;
+    min-height: 220px;
+    padding: 27px 25px 28px;
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 14px 35px rgba(26, 69, 82, 0.045);
+}
+
+.about-value-icon {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 20px;
+    border-radius: 17px;
+}
+
+.tone-1 {
+    color: #079b88;
+    background: #d9f5ed;
+}
+
+.tone-2 {
+    color: #7353c6;
+    background: #ece4ff;
+}
+
+.tone-3 {
+    color: #247ce0;
+    background: #e0efff;
+}
+
+.about-value-card h3 {
+    margin: 0 0 10px;
+    color: #142f40;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.about-value-card p {
+    margin: 0;
+    color: #657987;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.about-check {
+    position: absolute;
+    top: 25px;
+    right: 22px;
+    color: #21ae98;
+    opacity: 0.8;
+}
+
+/* =========================================================
+   PENGGUNA PLATFORM
+   ========================================================= */
+
+.about-audience {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin: 0 clamp(24px, 7.5vw, 124px) 72px;
+    padding: 30px;
+    border: 1px solid #d9e9e8;
+    border-radius: 22px;
+    background: #fff;
+}
+
+.about-audience-icon {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 20px;
+    color: #0c9f8a;
+    background: #dcf7ef;
+}
+
+.about-audience-copy {
+    flex: 1;
+}
+
+.about-audience-copy h2 {
+    margin: 8px 0;
+    color: #102a39;
+    font-family: "Manrope", sans-serif;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.about-audience-copy p {
+    margin: 0;
+    color: #657987;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.about-audience-points {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 210px;
+    color: #315365;
+    font-size: 12px;
+}
+
+.about-audience-points span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.about-audience-points svg {
+    color: #129e8b;
+}
+
+.about-cta {
+    margin-top: 0;
+}
+
+/* =========================================================
+   RESPONSIVE TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+    .about-nav {
+        gap: 15px;
+    }
+
+    .about-hero {
+        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+        gap: 20px;
+        padding: 34px 5vw 40px;
+    }
+
+    .about-hero h1 {
+        font-size: clamp(36px, 4.2vw, 50px);
+    }
+
+    .about-hero-art {
+        height: 270px;
+    }
+
+    .about-flask {
+        width: 160px;
+        height: 160px;
+    }
+
+    .about-flask svg {
+        width: 82px;
+        height: 82px;
+    }
+
+    .about-orbit {
+        width: 240px;
+        height: 240px;
+    }
+
+    .orbit-one {
+        width: 265px;
+        height: 265px;
+    }
+
+    .orbit-two {
+        width: 320px;
+        height: 320px;
+    }
+
+    .about-story,
+    .about-values {
+        padding-right: 5vw;
+        padding-left: 5vw;
+    }
+
+    .about-lab-mission {
+        padding-right: 5vw;
+        padding-left: 5vw;
+    }
+
+    .about-lab-mission-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-audience {
+        margin-right: 5vw;
+        margin-left: 5vw;
+        flex-wrap: wrap;
+    }
+
+    .about-audience-points {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-left: 88px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+    .about-nav {
+        display: none;
+    }
+
+    .about-hero {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 8px;
+        min-height: 0;
+        padding: 38px 24px 64px;
+    }
+
+    .about-hero-copy {
+        grid-column: 1;
+        grid-row: 1;
+        max-width: 100%;
+    }
+
+    .about-hero-copy .eyebrow {
+        margin-bottom: 14px;
+    }
+
+    .about-hero h1 {
+        font-size: clamp(36px, 9vw, 46px);
+        line-height: 1.12;
+    }
+
+    .about-lead {
+        margin-bottom: 22px;
+        font-size: 14px;
+        line-height: 1.75;
+    }
+
+    .about-hero-art {
+        grid-column: 1;
+        grid-row: 2;
+        justify-self: center;
+
+        width: 100%;
+        max-width: 380px;
+        height: 230px;
+        min-height: 0;
+        margin-top: 0;
+        transform: none;
+    }
+
+    .about-flask {
+        width: 145px;
+        height: 145px;
+    }
+
+    .about-flask svg {
+        width: 76px;
+        height: 76px;
+    }
+
+    .about-orbit {
+        width: 210px;
+        height: 210px;
+    }
+
+    .orbit-one {
+        width: 235px;
+        height: 235px;
+    }
+
+    .orbit-two {
+        width: 270px;
+        height: 270px;
+    }
+
+    .about-art-caption {
+        bottom: -4px;
+        max-width: 90%;
+        white-space: nowrap;
+        font-size: 11px;
+    }
+
+    .about-story {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 55px 24px;
+    }
+
+    .about-lab-mission {
+        padding: 55px 24px;
+    }
+
+    .about-lab-mission-card {
+        padding: 23px;
+    }
+
+    .about-lab-mission-heading {
+        margin-bottom: 26px;
+    }
+
+    .about-lab-mission-list li {
+        padding-left: 42px;
+    }
+
+    .about-values {
+        padding: 8px 24px 55px;
+    }
+
+    .about-value-grid {
+        grid-template-columns: 1fr;
+        gap: 13px;
+    }
+
+    .about-value-card {
+        min-height: 0;
+        padding: 22px;
+    }
+
+    .about-value-icon {
+        margin-bottom: 15px;
+    }
+
+    .about-audience {
+        margin: 0 24px 45px;
+        padding: 22px;
+        gap: 16px;
+    }
+
+    .about-audience-icon {
+        width: 52px;
+        height: 52px;
+    }
+
+    .about-audience-copy {
+        flex-basis: calc(100% - 75px);
+    }
+
+    .about-audience-copy h2 {
+        font-size: 19px;
+    }
+
+    .about-audience-points {
+        flex-direction: column;
+        padding-left: 0;
+        min-width: 0;
+    }
+}
+
+/* =========================================================
+   LAYAR SANGAT KECIL
+   ========================================================= */
+
+@media (max-width: 380px) {
+    .about-hero {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .about-hero h1 {
+        font-size: 34px;
+    }
+
+    .about-hero-art {
+        height: 210px;
+    }
+
+    .about-flask {
+        width: 130px;
+        height: 130px;
+    }
+
+    .about-orbit {
+        width: 185px;
+        height: 185px;
+    }
+
+    .orbit-one {
+        width: 205px;
+        height: 205px;
+    }
+
+    .orbit-two {
+        width: 235px;
+        height: 235px;
+    }
+
+    .about-art-caption {
+        gap: 6px;
+        padding: 8px 10px;
+        font-size: 10px;
+    }
+
+    .about-audience {
+        margin-right: 20px;
+        margin-left: 20px;
+        padding: 18px;
+    }
+}
